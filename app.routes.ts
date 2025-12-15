@@ -1,0 +1,48 @@
+import { Routes } from '@angular/router';
+import { SellerAuth } from './seller-auth/seller-auth';
+import { SellerHome } from './seller-home/seller-home';
+import { authGuard } from './auth-guard';
+import { SellerAddProduct } from './seller-add-product/seller-add-product';
+import { SellerUpdateProduct } from './seller-update-product/seller-update-product';
+import { Home } from './home/home';
+import { Search } from './search/search';
+import { ProductDetails } from './product-details/product-details';
+import { UserAuth } from './user-auth/user-auth';
+
+export const routes: Routes = [
+  {
+    component:Home,
+    path:"",
+  },
+  {
+    component: SellerAuth,
+    path: 'seller-auth',
+  },
+  {
+    component: SellerHome,
+    path: 'seller-home',
+    canActivate: [authGuard]
+  },
+  {
+    component: SellerAddProduct,
+    path: 'seller-add-product',
+    canActivate: [authGuard]
+  },
+  {
+    component: SellerUpdateProduct,
+    path: 'seller-update-product/:id',
+    canActivate: [authGuard]
+  },
+  {
+    component:Search,
+    path:'search/:query'
+  },
+  {
+    component:ProductDetails,
+    path:'details/:productId'
+  },
+  {
+    component:UserAuth,
+    path:'user-auth'
+  }
+];
